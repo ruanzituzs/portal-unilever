@@ -1,30 +1,35 @@
-# Unilever Corporate Quiz Platform
+# Portal de Conhecimento Unilever
 
-Production deployment on Vercel.
+Plataforma corporativa de quizzes e gamificação.
 
-## Environment Variables
+## Variáveis de Ambiente
 
-Create a `.env` file in the root directory with:
+Crie um arquivo `.env` na raiz do projeto com:
 
 ```
 DATABASE_URL="file:./dev.db"
-JWT_SECRET="your-jwt-secret-here"
-OPENAI_API_KEY="your-openai-key-here"
+JWT_SECRET="seu-segredo-jwt-aqui"
+OPENAI_API_KEY="sua-chave-openai-aqui"
 ```
 
-## Deployment
+## Instalação e Execução
 
-### Frontend (Vercel)
+### Frontend
 ```bash
 cd frontend
 npm install
-npm run vercel-build
+npm start
 ```
 
 ### Backend
-Deploy separately or use serverless functions.
+```bash
+cd backend
+npm install
+npm run start:dev
+```
 
-## Access
+## Credenciais de Acesso
 
-- **Admin**: admin@unilever.com / admin123
-- **Colaborador**: user@unilever.com / admin123
+- **Admin/Gestor**: `admin@unilever.com` / `admin2024`
+- **Colaborador**: `funcionario@unilever.com` / `funcionario2024`
+

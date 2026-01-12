@@ -134,8 +134,8 @@ export class QuizManagerComponent implements OnInit {
                 },
                 error: (err) => {
                     this.creating = false;
-                    console.error('Error creating quiz:', err);
-                    alert('Erro ao criar quiz.');
+                    console.error('Erro ao criar quiz:', err);
+                    alert('Erro ao criar quiz. Verifique os dados e tente novamente.');
                 }
             });
         } else {

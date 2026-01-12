@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   UNILEVER CORPORATE QUIZ - DESIGN SYSTEM 2.0
+   Clean, Professional, Inspiring
+   ======================================== */
+
+/* Import Google Fonts - Plus Jakarta Sans (Modern, Geometric, Accessible) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Brand Colors */
+    --unilever-blue: #1F36C7;
+    /* Primary Brand Color */
+    --unilever-dark: #101c4f;
+    /* Deep Navy */
+    --unilever-light: #4B5FD9;
+    /* Accessible Lighter Blue */
+
+    /* Secondary / Accents (Subtle) */
+    --accent-green: #37b789;
+    /* Sustainability / ESG / OMO Ref */
+    --accent-cyan: #00A6CE;
+    /* Care / Dove Ref */
+    --accent-warm: #FF6B6B;
+    /* Energy / Rexona Ref (Discrete) */
+
+    /* Neutral Palette (Clean & Minimalist) */
+    --surface-main: #F8FAFC;
+    /* Very light gray background */
+    --surface-card: #FFFFFF;
+    /* Pure white cards */
+    --text-primary: #1e293b;
+    /* Slate 800 - High legibility */
+    --text-secondary: #64748b;
+    /* Slate 500 */
+    --border-subtle: #e2e8f0;
+    /* Slate 200 */
+
+    /* UX Tokens */
+    --radius-sm: 0.5rem;
+    /* 8px */
+    --radius-md: 0.75rem;
+    /* 12px */
+    --radius-lg: 1rem;
+    /* 16px */
+    --radius-xl: 1.5rem;
+    /* 24px - For main containers */
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 10px 15px -3px rgba(31, 54, 199, 0.1), 0 4px 6px -2px rgba(31, 54, 199, 0.05);
+
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--surface-main);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ========================================
+   GLOBAL COMPONENTS
+   ======================================== */
+
+/* Buttons */
+.btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-semibold transition-all duration-200 relative overflow-hidden;
+}
+
+.btn-primary {
+    background: var(--unilever-blue);
+    color: white;
+    box-shadow: 0 4px 12px rgba(31, 54, 199, 0.25);
+}
+
+.btn-primary:hover {
+    background: #162899;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(31, 54, 199, 0.35);
+}
+
+.btn-outline {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.btn-outline:hover {
+    border-color: var(--unilever-blue);
+    color: var(--unilever-blue);
+    background: #f8fafc;
+}
+
+.btn-ghost {
+    color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+    color: var(--unilever-blue);
+    background: rgba(31, 54, 199, 0.05);
+}
+
+/* Cards */
+.card {
+    background: var(--surface-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(31, 54, 199, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Forms */
+.form-label {
+    @apply block text-sm font-semibold text-gray-700 mb-1.5 ml-1;
+}
+
+.form-control {
+    @apply w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 transition-all duration-200;
+}
+
+.form-control:focus {
+    @apply bg-white outline-none border-blue-600 ring-4 ring-blue-600/10;
+}
+
+/* Badges */
+.badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-blue {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.badge-green {
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+.badge-orange {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+/* ========================================
+   LAYOUT UTILITIES
+   ======================================== */
+
+.page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+}
+
+.section-title {
+    @apply text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3;
+}
+
+/* Background Pattern - Subtle Organic "U" concept */
+.bg-pattern-organic {
+    background-image:
+        radial-gradient(circle at 100% 0%, rgba(31, 54, 199, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 0% 100%, rgba(55, 183, 137, 0.03) 0%, transparent 20%);
+    background-attachment: fixed;
+}
+
+/* Glass Header */
+.header-glass {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-enter {
+    animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Progress Bar */
+.progress-track {
+    @apply h-2 bg-gray-100 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+    @apply h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-all duration-1000 ease-out;
+}

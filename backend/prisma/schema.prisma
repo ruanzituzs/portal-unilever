@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// enum Role removed for SQLite compatibility
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("EMPLOYEE") // 'EMPLOYEE' or 'MANAGER'
+  department String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  quizAttempts UserQuizAttempt[]
+  medals       UserMedal[]
+}
+
+model Video {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  url         String   // URL to video file or embed
+  duration    Int      @default(0)
+  createdAt   DateTime @default(now())
+  
+  quizzes     Quiz[]
+}
+
+model Quiz {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  videoId     String?
+  video       Video?   @relation(fields: [videoId], references: [id])
+  minScore    Int      @default(70) // Passing score percentage
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  questions   Question[]
+  attempts    UserQuizAttempt[]
+}
+
+model Question {
+  id        String   @id @default(uuid())
+  text      String
+  quizId    String
+  quiz      Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  answers   Answer[]
+}
+
+model Answer {
+  id         String   @id @default(uuid())
+  text       String
+  isCorrect  Boolean  @default(false)
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+}
+
+model UserQuizAttempt {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  quizId    String
+  quiz      Quiz     @relation(fields: [quizId], references: [id])
+  score     Int      // Score achieved
+  passed    Boolean
+  completedAt DateTime @default(now())
+}
+
+model UserMedal {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      String   // 'GOLD', 'SILVER', 'BRONZE', 'WEEKLY_CHAMPION'
+  awardedAt DateTime @default(now())
+}

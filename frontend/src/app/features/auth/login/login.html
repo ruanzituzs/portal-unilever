@@ -1,0 +1,72 @@
+<div class="login-container">
+    <!-- Background Elements -->
+    <div class="bg-mesh"></div>
+    <div class="geo-overlay"></div>
+
+    <!-- Main Card -->
+    <div class="login-card">
+        <!-- Header -->
+        <div class="logo-area">
+            <div class="logo-circle">
+                <img src="/logo.png" alt="U">
+            </div>
+            <h1 class="app-title">Unilever Corporate</h1>
+            <p class="app-subtitle">Acesso Seguro Colaborador</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <!-- Email -->
+            <div class="form-group">
+                <input id="email" type="email" class="form-input" formControlName="email"
+                    placeholder="E-mail Corporativo">
+                <svg class="input-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                </svg>
+                <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error-tag">
+                    <span>Digite um e-mail corporativo válido</span>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <input id="password" type="password" class="form-input" formControlName="password"
+                    placeholder="Sua Senha">
+                <svg class="input-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+
+            <!-- Global Error -->
+            <div *ngIf="error" class="error-tag" style="justify-content: center; margin-bottom: 1rem;">
+                {{ error }}
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" [disabled]="loading || loginForm.invalid" class="btn-submit">
+                <span *ngIf="!loading">Acessar Plataforma</span>
+                <span *ngIf="loading">Autenticando...</span>
+            </button>
+
+            <!-- Register Link -->
+            <div class="text-center mt-4">
+                <p class="text-xs text-white/70">
+                    Novo colaborador?
+                    <a routerLink="/register" class="text-white font-bold hover:underline cursor-pointer">Criar
+                        Conta</a>
+                </p>
+            </div>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                <ul class="pill-nav">
+                    <li>Suporte</li>
+                    <li>Privacidade</li>
+                    <li>Termos</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>

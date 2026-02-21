@@ -1,0 +1,19 @@
+services:
+  - type: pgo
+    name: unilever-db
+    plan: free
+    version: 15
+
+  - type: web
+    name: unilever-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm run start:prod
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: unilever-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true

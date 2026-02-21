@@ -1,6 +1,18 @@
 {
-    "buildCommand": "cd frontend && npm install --legacy-peer-deps && npm run vercel-build",
-    "outputDirectory": "frontend/dist/frontend/browser",
-    "installCommand": "echo skip",
-    "framework": null
+    "version": 2,
+    "builds": [
+        {
+            "src": "frontend/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist/frontend/browser"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
+    ]
 }

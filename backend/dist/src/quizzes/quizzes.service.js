@@ -77,29 +77,31 @@ let QuizzesService = class QuizzesService {
     async generateAiQuiz(videoId) {
         const video = await this.prisma.video.findUnique({ where: { id: videoId } });
         if (!video) {
-            throw new Error('Video not found');
+            throw new Error('Vídeo não encontrado');
         }
         const OpenAI = require('openai');
         const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
         const prompt = `
-      Create a quiz with 5 multiple choice questions based on the following video metadata:
-      Title: ${video.title}
-      Description: ${video.description}
+      Crie um quiz com 5 perguntas de múltipla escolha baseadas nos seguintes metadados de vídeo:
+      Título: ${video.title}
+      Descrição: ${video.description}
 
-      The output must be a valid JSON array of objects with the following structure:
+      IMPORTANTE: As perguntas e respostas devem estar em PORTUGUÊS (Brasil).
+
+      A saída deve ser um array JSON válido de objetos com a seguinte estrutura:
       [
         {
-          "text": "Question text here?",
+          "text": "Texto da pergunta aqui?",
           "answers": [
-            { "text": "Correct answer", "isCorrect": true },
-            { "text": "Wrong answer 1", "isCorrect": false },
-            { "text": "Wrong answer 2", "isCorrect": false },
-            { "text": "Wrong answer 3", "isCorrect": false }
+            { "text": "Resposta correta", "isCorrect": true },
+            { "text": "Resposta errada 1", "isCorrect": false },
+            { "text": "Resposta errada 2", "isCorrect": false },
+            { "text": "Resposta errada 3", "isCorrect": false }
           ]
         }
       ]
       
-      Only return the JSON array, no markdown or code blocks.
+      Retorne APENAS o array JSON, sem markdown ou blocos de código.
     `;
         const completion = await openai.chat.completions.create({
             messages: [{ role: 'user', content: prompt }],
@@ -111,7 +113,7 @@ let QuizzesService = class QuizzesService {
         }
         catch (e) {
             console.error('Failed to parse AI response', e);
-            throw new Error('Failed to generate quiz from AI');
+            throw new Error('Falha ao gerar quiz com IA');
         }
     }
     async submitAttempt(userId, quizId, score, passed) {

@@ -35,7 +35,8 @@ export class RegisterComponent {
 
             // Prepare data
             const userData = {
-                ...this.registerForm.value
+                ...this.registerForm.value,
+                accessCode: this.registerForm.value.accessCode?.trim().toUpperCase()
             };
 
             this.authService.register(userData).subscribe({

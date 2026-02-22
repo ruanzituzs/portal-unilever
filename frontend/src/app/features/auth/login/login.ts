@@ -15,6 +15,8 @@ export class LoginComponent {
   loginForm: FormGroup;
   error = '';
   loading = false;
+  slowServerWarning = false;
+  private loadingTimeout: any;
 
   constructor(
     private fb: FormBuilder,
@@ -31,8 +33,19 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.loading = true;
       this.error = '';
+      this.slowServerWarning = false;
+      this.authService.logout(); // Clear previous token to prevent role mixing
+
+      // Show warning if Render free tier is waking up
+      this.loadingTimeout = setTimeout(() => {
+        if (this.loading) {
+          this.slowServerWarning = true;
+        }
+      }, 5000);
+
       this.authService.login(this.loginForm.value).subscribe({
         next: () => {
+          clearTimeout(this.loadingTimeout);
           const token = this.authService.getToken();
           if (token) {
             const decoded: any = this.authService.decodeToken(token);
@@ -44,8 +57,10 @@ export class LoginComponent {
           }
         },
         error: (err) => {
+          clearTimeout(this.loadingTimeout);
           this.error = 'Falha no login. Verifique suas credenciais.';
           this.loading = false;
+          this.slowServerWarning = false;
           console.error(err);
         }
       });

@@ -44,6 +44,14 @@
                 {{ error }}
             </div>
 
+            <!-- Slow Server Warning -->
+            <div *ngIf="slowServerWarning"
+                class="bg-blue-500/20 border border-blue-500/50 text-blue-100 text-sm p-3 rounded-lg mb-4 text-center leading-relaxed font-semibold animate-pulse">
+                Iniciando o banco de dados na nuvem...<br>
+                <span class="text-xs text-blue-200 mt-1 block font-normal">Isso pode levar até 50 segundos no primeiro
+                    acesso do dia.</span>
+            </div>
+
             <!-- Submit -->
             <button type="submit" [disabled]="loading || loginForm.invalid" class="btn-submit">
                 <span *ngIf="!loading">Acessar Plataforma</span>

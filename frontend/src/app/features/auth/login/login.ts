@@ -44,9 +44,17 @@ export class LoginComponent {
       }, 5000);
 
       this.authService.login(this.loginForm.value).subscribe({
-        next: () => {
+        next: (res: any) => {
           clearTimeout(this.loadingTimeout);
           const token = this.authService.getToken();
+
+          if (res && res.error) {
+            this.error = 'Credenciais inválidas. Verifique seu e-mail e senha.';
+            this.loading = false;
+            this.slowServerWarning = false;
+            return;
+          }
+
           if (token) {
             const decoded: any = this.authService.decodeToken(token);
             if (decoded && decoded.role === 'MANAGER') {
@@ -54,6 +62,10 @@ export class LoginComponent {
             } else {
               this.router.navigate(['/dashboard']);
             }
+          } else {
+            this.error = 'Erro ao autenticar. Tente novamente.';
+            this.loading = false;
+            this.slowServerWarning = false;
           }
         },
         error: (err) => {

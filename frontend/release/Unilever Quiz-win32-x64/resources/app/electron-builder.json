@@ -1,0 +1,23 @@
+{
+    "appId": "com.unilever.quiz",
+    "productName": "Unilever Quiz",
+    "directories": {
+        "output": "release/"
+    },
+    "files": [
+        "dist/frontend/browser/**/*",
+        "main.js",
+        "package.json"
+    ],
+    "win": {
+        "target": "nsis",
+        "icon": "dist/frontend/browser/assets/icons/icon-512x512.png"
+    },
+    "nsis": {
+        "oneClick": false,
+        "allowToChangeInstallationDirectory": true,
+        "createDesktopShortcut": true,
+        "createStartMenuShortcut": true,
+        "shortcutName": "Unilever Quiz"
+    }
+}

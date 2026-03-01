@@ -10,7 +10,7 @@
     "test": "ng test",
     "vercel-build": "ng build --configuration production",
     "electron": "electron .",
-    "electron:build": "npm run build && electron-packager . \"Unilever Quiz\" --platform=win32 --arch=x64 --out=release --overwrite --ignore=\"^/release$\""
+    "electron:build": "npm run build && electron-packager . \"Unilever Learn Hub\" --platform=win32 --arch=x64 --out=release --overwrite --ignore=\"^/release$\""
   },
   "prettier": {
     "printWidth": 100,

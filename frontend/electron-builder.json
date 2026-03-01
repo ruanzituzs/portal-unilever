@@ -1,6 +1,6 @@
 {
-    "appId": "com.unilever.quiz",
-    "productName": "Unilever Quiz",
+    "appId": "com.unilever.learnhub",
+    "productName": "Unilever Learn Hub",
     "directories": {
         "output": "release/"
     },
@@ -18,6 +18,6 @@
         "allowToChangeInstallationDirectory": true,
         "createDesktopShortcut": true,
         "createStartMenuShortcut": true,
-        "shortcutName": "Unilever Quiz"
+        "shortcutName": "Unilever Learn Hub"
     }
 }

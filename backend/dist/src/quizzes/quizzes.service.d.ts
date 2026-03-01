@@ -93,6 +93,7 @@ export declare class QuizzesService {
         id: string;
         score: number;
         passed: boolean;
+        timeTaken: number;
         completedAt: Date;
         userId: string;
         quizId: string;
@@ -101,6 +102,7 @@ export declare class QuizzesService {
         id: string;
         score: number;
         passed: boolean;
+        timeTaken: number;
         completedAt: Date;
         userId: string;
         quizId: string;

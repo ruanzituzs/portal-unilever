@@ -40,7 +40,7 @@ let CertificatesService = class CertificatesService {
             doc.moveDown(2);
             doc.font('Helvetica-Bold').fontSize(40).fillColor('#101c4f').text('Unilever', { align: 'center' });
             doc.moveDown(0.5);
-            doc.fontSize(20).fillColor('#64748b').text('Corporate Learning Certificate', { align: 'center' });
+            doc.fontSize(20).fillColor('#64748b').text('Unilever Learning Hub Certificate', { align: 'center' });
             doc.moveDown(2);
             doc.fontSize(16).fillColor('#1e293b').text('This is to certify that', { align: 'center' });
             doc.moveDown(1);

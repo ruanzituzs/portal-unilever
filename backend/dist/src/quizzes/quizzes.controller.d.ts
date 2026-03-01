@@ -36,6 +36,7 @@ export declare class QuizzesController {
         id: string;
         score: number;
         passed: boolean;
+        timeTaken: number;
         completedAt: Date;
         userId: string;
         quizId: string;
@@ -44,6 +45,7 @@ export declare class QuizzesController {
         id: string;
         score: number;
         passed: boolean;
+        timeTaken: number;
         completedAt: Date;
         userId: string;
         quizId: string;

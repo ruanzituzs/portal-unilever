@@ -1,0 +1,85 @@
+{
+  "configVersion": 1,
+  "timestamp": 1771753195418,
+  "index": "./index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "./chunk-ADR4OME2.js",
+        "./chunk-BDL2EWQC.js",
+        "./chunk-BYSFEUGC.js",
+        "./chunk-EQ7TKQQF.js",
+        "./chunk-G2JQ2GAW.js",
+        "./chunk-NT76NOVW.js",
+        "./chunk-PMGH5KPS.js",
+        "./chunk-PYD6WGA3.js",
+        "./chunk-QMFBIE3V.js",
+        "./favicon.ico",
+        "./index.html",
+        "./main-QNVGZHPX.js",
+        "./manifest.webmanifest",
+        "./polyfills-6ISPNSXF.js",
+        "./styles-M7IAXCJH.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "./logo.png",
+        "./logo.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "./chunk-ADR4OME2.js": "d599ce46e0a0a13b1e2eab9557fb37627427c9ac",
+    "./chunk-BDL2EWQC.js": "d4c89b9cd64928e36405cb85e5125b87580649a9",
+    "./chunk-BYSFEUGC.js": "2eb97e262e6852d32a39362c8c397fdd148b7eff",
+    "./chunk-EQ7TKQQF.js": "d66d7eae9df58a2c75bc37a8876e1447ade51cbf",
+    "./chunk-G2JQ2GAW.js": "04b0a0a0d8a7826624c86791fa0bd0c72e07fc40",
+    "./chunk-NT76NOVW.js": "21085f8efac2546fcbd7dfbd9709151c90b1d818",
+    "./chunk-PMGH5KPS.js": "2f45ffbd45b4a09a8a40d6055c3b83ec96a25ecf",
+    "./chunk-PYD6WGA3.js": "543883ab3e3862e410ba8e54994b9feb2327cd63",
+    "./chunk-QMFBIE3V.js": "1b16a903d238e196cbad682d9371f855ce06d5e8",
+    "./favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "./index.html": "55c9e9cae658f98303505853387cfc000e64b5c0",
+    "./logo.png": "f965a0de8054725b07c4ca40f53964c48cc15941",
+    "./logo.svg": "78fb38f212fa49029aff24c669a39648d9b4e68b",
+    "./main-QNVGZHPX.js": "24c8eff7dce16449d8fdaaf77aad14fb3cbe6986",
+    "./manifest.webmanifest": "1826e5c863ba88e7aeaa76cfbcc884d577dc4a24",
+    "./polyfills-6ISPNSXF.js": "b15ba4d1036f2db285649ff775f184bcdcd0b08a",
+    "./styles-M7IAXCJH.css": "d238821bfe46ef5d69cf8257f7f46e92a621e457"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

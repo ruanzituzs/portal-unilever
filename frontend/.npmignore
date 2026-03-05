@@ -1,0 +1,13 @@
+/src
+/release
+/tmp
+/out-tsc
+/bazel-out
+/.idea
+/.vscode
+/.angular
+/.vercel
+/e2e
+/coverage
+*.log
+!/dist

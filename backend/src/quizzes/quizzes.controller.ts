@@ -20,8 +20,8 @@ export class QuizzesController {
 
   @Post(':id/attempt')
   @UseGuards(JwtAuthGuard)
-  submitAttempt(@Param('id') id: string, @Body() body: { score: number, passed: boolean }, @Req() req: any) {
-    return this.quizzesService.submitAttempt(req.user.userId, id, body.score, body.passed);
+  submitAttempt(@Param('id') id: string, @Body() body: { score: number, passed: boolean, timeTaken?: number, answers?: any[] }, @Req() req: any) {
+    return this.quizzesService.submitAttempt(req.user.userId, id, body.score, body.passed, body.timeTaken, body.answers);
   }
 
   @Get(':id/attempt')

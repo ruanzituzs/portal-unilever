@@ -116,13 +116,24 @@ let QuizzesService = class QuizzesService {
             throw new Error('Falha ao gerar quiz com IA');
         }
     }
-    async submitAttempt(userId, quizId, score, passed) {
+    async submitAttempt(userId, quizId, score, passed, timeTaken, answers) {
         return this.prisma.userQuizAttempt.create({
             data: {
                 userId,
                 quizId,
                 score,
-                passed
+                passed,
+                timeTaken: timeTaken || 0,
+                ...(answers && answers.length > 0 ? {
+                    answers: {
+                        create: answers.map(a => ({
+                            questionId: a.questionId,
+                            selectedOption: a.selectedOption,
+                            isCorrect: a.isCorrect,
+                            timeSpent: a.timeSpent || 0
+                        }))
+                    }
+                } : {})
             }
         });
     }

@@ -117,7 +117,7 @@ export class QuizzesService {
     }
   }
 
-  async submitAttempt(userId: string, quizId: string, score: number, passed: boolean) {
+  async submitAttempt(userId: string, quizId: string, score: number, passed: boolean, timeTaken?: number, answers?: any[]) {
     // Check if attempt exists, if so, update if higher score? Or just log new one.
     // For now, let's keep it simple: Create new attempt.
     return this.prisma.userQuizAttempt.create({
@@ -125,7 +125,18 @@ export class QuizzesService {
         userId,
         quizId,
         score,
-        passed
+        passed,
+        timeTaken: timeTaken || 0,
+        ...(answers && answers.length > 0 ? {
+          answers: {
+            create: answers.map(a => ({
+              questionId: a.questionId,
+              selectedOption: a.selectedOption,
+              isCorrect: a.isCorrect,
+              timeSpent: a.timeSpent || 0
+            }))
+          }
+        } : {})
       }
     });
   }

@@ -19,12 +19,13 @@ export declare class QuizzesController {
         })[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         title: string;
         description: string | null;
-        videoId: string | null;
+        category: string | null;
         minScore: number;
+        createdAt: Date;
+        updatedAt: Date;
+        videoId: string | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     generateAi(body: {
         videoId: string;
@@ -32,30 +33,32 @@ export declare class QuizzesController {
     submitAttempt(id: string, body: {
         score: number;
         passed: boolean;
+        timeTaken?: number;
+        answers?: any[];
     }, req: any): Promise<{
         id: string;
+        quizId: string;
         score: number;
         passed: boolean;
         timeTaken: number;
         completedAt: Date;
         userId: string;
-        quizId: string;
     }>;
     getAttempt(id: string, req: any): Promise<{
         id: string;
+        quizId: string;
         score: number;
         passed: boolean;
         timeTaken: number;
         completedAt: Date;
         userId: string;
-        quizId: string;
     } | null>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         video: {
             id: string;
-            createdAt: Date;
             title: string;
             description: string | null;
+            createdAt: Date;
             url: string;
             duration: number;
         } | null;
@@ -66,19 +69,20 @@ export declare class QuizzesController {
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         title: string;
         description: string | null;
-        videoId: string | null;
+        category: string | null;
         minScore: number;
+        createdAt: Date;
+        updatedAt: Date;
+        videoId: string | null;
     })[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__QuizClient<({
         video: {
             id: string;
-            createdAt: Date;
             title: string;
             description: string | null;
+            createdAt: Date;
             url: string;
             duration: number;
         } | null;
@@ -96,29 +100,32 @@ export declare class QuizzesController {
         })[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         title: string;
         description: string | null;
-        videoId: string | null;
+        category: string | null;
         minScore: number;
+        createdAt: Date;
+        updatedAt: Date;
+        videoId: string | null;
     }) | null, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updateQuizDto: UpdateQuizDto): import(".prisma/client").Prisma.Prisma__QuizClient<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         title: string;
         description: string | null;
-        videoId: string | null;
+        category: string | null;
         minScore: number;
+        createdAt: Date;
+        updatedAt: Date;
+        videoId: string | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__QuizClient<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         title: string;
         description: string | null;
-        videoId: string | null;
+        category: string | null;
         minScore: number;
+        createdAt: Date;
+        updatedAt: Date;
+        videoId: string | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

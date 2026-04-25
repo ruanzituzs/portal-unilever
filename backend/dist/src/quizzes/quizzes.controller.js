@@ -30,7 +30,7 @@ let QuizzesController = class QuizzesController {
         return this.quizzesService.generateAiQuiz(body.videoId);
     }
     submitAttempt(id, body, req) {
-        return this.quizzesService.submitAttempt(req.user.userId, id, body.score, body.passed);
+        return this.quizzesService.submitAttempt(req.user.userId, id, body.score, body.passed, body.timeTaken, body.answers);
     }
     getAttempt(id, req) {
         return this.quizzesService.getUserAttempt(req.user.userId, id);

@@ -41,6 +41,7 @@ model Quiz {
   id          String   @id @default(uuid())
   title       String
   description String?
+  category    String?  // Category for analytics (e.g. Marketing, Sales)
   videoId     String?
   video       Video?   @relation(fields: [videoId], references: [id])
   minScore    Int      @default(70) // Passing score percentage
@@ -68,14 +69,27 @@ model Answer {
 }
 
 model UserQuizAttempt {
-  id        String   @id @default(uuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  quizId    String
-  quiz      Quiz     @relation(fields: [quizId], references: [id])
-  score     Int      // Score achieved
-  passed    Boolean
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  quizId      String
+  quiz        Quiz     @relation(fields: [quizId], references: [id])
+  score       Int      // Score achieved
+  passed      Boolean
+  timeTaken   Int      @default(0) // total seconds
   completedAt DateTime @default(now())
+
+  answers     QuizAttemptAnswer[]
+}
+
+model QuizAttemptAnswer {
+  id             String   @id @default(uuid())
+  attemptId      String
+  attempt        UserQuizAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId     String
+  selectedOption String   // The Answer ID chosen
+  isCorrect      Boolean
+  timeSpent      Int      @default(0) // seconds spent on this question
 }
 
 model UserMedal {

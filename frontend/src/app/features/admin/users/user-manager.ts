@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { UsersService, User } from '../../../core/services/users.service';
+import { EmployeeAnalyticsDrawerComponent } from '../employee-analytics-drawer/employee-analytics-drawer.component';
 
 @Component({
     selector: 'app-user-manager',
     standalone: true,
-    imports: [CommonModule, RouterLink],
+    imports: [CommonModule, RouterLink, EmployeeAnalyticsDrawerComponent],
     templateUrl: './user-manager.html'
 })
 export class UserManagerComponent implements OnInit {
@@ -15,8 +16,25 @@ export class UserManagerComponent implements OnInit {
     error = '';
     deletingId: string | null = null;
     deletingError = '';
+    
+    // Drawer State
+    isAnalyticsDrawerOpen = false;
+    selectedUserIdForAnalytics: string | null = null;
 
     constructor(private usersService: UsersService) { }
+
+    openAnalytics(user: User): void {
+        this.selectedUserIdForAnalytics = user.id;
+        this.isAnalyticsDrawerOpen = true;
+    }
+
+    closeAnalytics(): void {
+        this.isAnalyticsDrawerOpen = false;
+        // Optional: clear user id after a short delay for animation
+        setTimeout(() => {
+            this.selectedUserIdForAnalytics = null;
+        }, 300);
+    }
 
     ngOnInit(): void {
         this.loadUsers();

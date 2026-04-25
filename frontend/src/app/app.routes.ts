@@ -45,6 +45,12 @@ export const routes: Routes = [
         data: { role: 'MANAGER' }
     },
     {
+        path: 'admin/analytics/:userId',
+        loadComponent: () => import('./features/admin/analytics/employee-analytics-page/employee-analytics-page').then(m => m.EmployeeAnalyticsPageComponent),
+        canActivate: [authGuard],
+        data: { role: 'MANAGER' }
+    },
+    {
         path: 'quiz/:id',
         loadComponent: () => import('./features/employee/quiz-player/quiz-player').then(m => m.QuizPlayerComponent),
         canActivate: [authGuard]

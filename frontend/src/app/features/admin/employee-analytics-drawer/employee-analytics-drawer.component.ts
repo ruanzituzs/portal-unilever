@@ -118,7 +118,6 @@ import { AnalyticsService, UserAnalytics } from '../../../core/services/analytic
                             {{ act.score }}%
                         </div>
                     </div>
-                    </div>
                 </div>
 
                 <!-- Full Analytics Button -->

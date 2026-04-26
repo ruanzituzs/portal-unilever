@@ -51,7 +51,7 @@ export class EmployeeAnalyticsPageComponent implements OnInit {
   public barChartType: ChartType = 'bar';
 
   // Doughnut Chart (Speed)
-  public speedChartOptions: ChartConfiguration['options'] = {
+  public speedChartOptions: any = {
     responsive: true,
     cutout: '70%'
   };
